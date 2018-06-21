@@ -15,6 +15,8 @@ class CreateTypesTable extends Migration
     {
         Schema::create('type', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('designation');
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }
