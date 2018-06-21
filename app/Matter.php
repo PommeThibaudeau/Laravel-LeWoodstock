@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * App\Matter
  *
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Matter[] $articles
  */
 class Matter extends Model
 {

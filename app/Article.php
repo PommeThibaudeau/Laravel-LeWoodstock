@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
  * App\Article
  *
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $matters
+ * @property-read \App\Type $type
  */
 class Article extends Model
 {

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * App\Image
  *
  * @mixin \Eloquent
+ * @property-read \App\Article $article
  */
 class Image extends Model
 {

@@ -18,7 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 /**
  * ADMIN
  */
@@ -37,6 +36,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::put('/images/{id}', 'ImageController@update')->name('images.update');
     Route::delete('/images/{id}', 'ImageController@destroy')->name('images.destroy');
     Route::get('/images', 'ImageController@index')->name('images.index');
+    
+    // Types
+    Route::get('/types/create', 'TypeController@create')->name('types.create');
+    Route::post('/types', 'TypeController@store')->name('types.store');
+    Route::get('/types/edit/{id}', 'TypeController@edit')->name('types.edit');
+    Route::delete('/types/{id}', 'TypeController@destroy')->name('types.destroy');
+    Route::put('/types/{id}', 'TypeController@update')->name('types.update');
 });
 
 /**
@@ -49,6 +55,12 @@ Route::get('/articles/{id}', 'ArticleController@show')->name('articles.show');
  * IMAGES
  */
 Route::get('/images/{id}', 'ImageController@show')->name('images.show');
+
+/**
+ * TYPES
+ */
+Route::get('/types/{id}', 'TypeController@show')->name('types.show');
+Route::get('/types', 'TypeController@index')->name('types.index');
 
 /**
  * AUTHENTIFICATION
