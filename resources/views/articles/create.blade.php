@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{ Form::model($article, ['route' => ['articles.store']]) }}
+    {{ Form::model($article, ['method' => 'POST', 'route' => ['articles.store'], 'files' => true]) }}
         {{ Form::label('designation', 'Désignation') }}<br>
         {{ Form::text('designation') }}<br>
 
@@ -13,6 +13,11 @@
 
         {{ Form::label('price', 'Prix') }}<br>
         {{ Form::text('price') }}<br>
+
+        @for($i=0;$i<5;++$i)
+            {{ Form::label("images", 'Images') }}<br>
+            {{ Form::file("images[]") }}<br>
+        @endfor
 
         {{ Form::submit('Envoyer')}}
     {{ Form::close() }}

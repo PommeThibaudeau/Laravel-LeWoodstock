@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{ Form::model($image, ['route' => ['images.store'], 'files' => true]) }}
+    {{ Form::model($image, ['method' => 'PUT', 'route' => ['images.store', $image->id], 'files' => true]) }}
         {{ Form::label('src', 'Image') }}<br>
         {{ Form::file('src') }}<br>
 
