@@ -31,12 +31,13 @@ class ArticleController extends Controller
             'images.*'    => 'image',
         ]);
 
-        foreach(request()->file('images') as $image){
+        $article = Article::create($data);
+
+        foreach (request()->file('images') as $image){
             $path = $image->store('images');
-            Image::create(['src' => $path]);
+            Image::create(['src' => $path, 'article_id' => $article->getKey()]);
         }
 
-        Article::create($data);
         return redirect('articles')->with([
             'message' => 'Article enregistré avec succès'
         ]);
@@ -60,12 +61,11 @@ class ArticleController extends Controller
         $article = new Article();
         $article->find($id)->update($data);
 
-        foreach(request()->file('images') as $image){
+        foreach (request()->file('images') as $image){
             dump($image);
-//            $path = $image->store('images');
-//            Image::update(['src' => $path]);
+//          $path = $image->store('images');
+//          Image::update(['src' => $path]);
         }
-
 
         return redirect('articles')->with([
             'message' => 'Article enregistré avec succès'
