@@ -22,8 +22,18 @@ class Matter extends Model
     'image_url',
   ];
 
-    // N..N
-    public function articles(){
-        return $this->belongsToMany(Matter::class);
-    }
+  // Surcouche Accesseur set
+  public function setImageAttribute($property){
+      $this->attributes['image_url'] = $property;
+  }
+
+  // Surcouche Accesseur get
+  public function getImageAttribute(){
+      return $this->attributes['image_url'];
+  }
+
+  // N..N
+  public function articles(){
+      return $this->belongsToMany(Matter::class);
+  }
 }

@@ -43,6 +43,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/types/edit/{id}', 'TypeController@edit')->name('types.edit');
     Route::delete('/types/{id}', 'TypeController@destroy')->name('types.destroy');
     Route::put('/types/{id}', 'TypeController@update')->name('types.update');
+
+    // Matters
+    Route::get('/matters/create', 'MatterController@create')->name('matters.create');
+    Route::post('/matters', 'MatterController@store')->name('matters.store');
+    Route::get('/matters/edit/{id}', 'MatterController@edit')->name('matters.edit');
+    Route::delete('/matters/{id}', 'MatterController@destroy')->name('matters.destroy');
+    Route::put('/matters/{id}', 'MatterController@update')->name('matters.update');
 });
 
 /**
@@ -61,6 +68,12 @@ Route::get('/images/{id}', 'ImageController@show')->name('images.show');
  */
 Route::get('/types/{id}', 'TypeController@show')->name('types.show');
 Route::get('/types', 'TypeController@index')->name('types.index');
+
+/**
+ * MATTERS
+ */
+Route::get('/matters/{id}', 'MatterController@show')->name('matters.show');
+Route::get('/matters', 'MatterController@index')->name('matters.index');
 
 /**
  * AUTHENTIFICATION
