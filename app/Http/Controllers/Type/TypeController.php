@@ -54,6 +54,7 @@ class TypeController extends Controller
 
 
     public function update($id, Request $request){
+
         /* Check if the data are accurate */
         $data = request()->validate([
             'designation' => 'required|max:50',
@@ -81,6 +82,15 @@ class TypeController extends Controller
         ]);
     }
 
+    public function destroy($id) {
 
+        $type = Type::findOrFail($id);
+        $designation = $type->designation;
+        $type->delete();
+
+        return redirect()->route('types.index')->with([
+            'message' => "Le type $designation a bien été supprimé"
+        ]);
+    }
 
 }

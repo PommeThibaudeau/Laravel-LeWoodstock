@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/types/create', 'TypeController@create')->name('types.create');
     Route::post('/types', 'TypeController@store')->name('types.store');
     Route::get('/types/edit/{id}', 'TypeController@edit')->name('types.edit');
+    Route::delete('/types/{id}', 'TypeController@destroy')->name('types.destroy');
     Route::put('/types/{id}', 'TypeController@update')->name('types.update');
 });
 
