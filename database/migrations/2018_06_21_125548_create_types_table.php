@@ -13,7 +13,7 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('type', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
             $table->text('designation');
             $table->string('image_url')->nullable();
@@ -28,6 +28,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type');
+        Schema::dropIfExists('types');
     }
 }
