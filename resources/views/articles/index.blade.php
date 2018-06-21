@@ -10,8 +10,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $article->designation }}</h5>
                         <p class="card-text">{{ $article->description }}</p>
-                        @foreach($article->maters as $mater)
-                            <p class="card-text"><small class="text-muted">{{ $mater->designation }}</small></p>
+                        @foreach($article->matters as $matter)
+                            <p class="card-text"><small class="text-muted">{{ $matter->designation }}</small></p>
                         @endforeach
                         <a href="{{ url("/articles/".$article->id) }}" class="btn btn-primary">En savoir plus</a>
                     </div>

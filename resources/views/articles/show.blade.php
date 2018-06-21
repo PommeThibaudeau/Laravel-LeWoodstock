@@ -7,9 +7,9 @@
         <p class="card-text">{{ $article->description }}</p>
         <p class="card-text">{{ $article->stock }}</p>
         <p class="card-text">{{ $article->price }}</p>
-        @if(count($article->maters))
-            @foreach($article->maters as $mater)
-                <p class="card-text">{{ $mater->designation }}</p>
+        @if(count($article->matters))
+            @foreach($article->matters as $matter)
+                <p class="card-text">{{ $matter->designation }}</p>
             @endforeach
         @endif
         @if(count($article->types))

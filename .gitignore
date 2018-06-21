@@ -13,3 +13,4 @@ yarn-error.log
 .env.*.php
 .env.php
 .env
+composer.lock
