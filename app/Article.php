@@ -4,6 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Article
+ *
+ * @mixin \Eloquent
+ */
 class Article extends Model
 {
   // fields
@@ -13,6 +18,13 @@ class Article extends Model
   protected $stock;
   protected $price;
 
+  protected $fillable = [
+    'description',
+    'designation',
+    'stock',
+    'price',
+  ];
+
   // 1..N
   public function type(){
     return $this->belongsTo(Type::class);
@@ -20,5 +32,9 @@ class Article extends Model
   // N..1
   public function images(){
     return $this->hasMany(Image::class);
+  }
+  // N..N
+  public function matters(){
+      return $this->belongsToMany(Article::class);
   }
 }

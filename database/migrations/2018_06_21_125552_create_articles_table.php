@@ -15,10 +15,10 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('designation');
             $table->text('description')->nullable();
-            $table->string('designation')->nullable();
-            $table->string('stock')->nullable();
-            $table->string('price')->nullable();
+            $table->integer('stock')->nullable();
+            $table->float('price')->nullable();
             $table->timestamps();
             // foreign key for type 1..N
             $table->unsignedInteger('type_id');
