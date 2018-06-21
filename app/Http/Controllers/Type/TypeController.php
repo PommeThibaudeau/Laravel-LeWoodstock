@@ -1,83 +1,86 @@
 <?php
 
-namespace App\Http\Controllers\Type;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Type;
+use Illuminate\Http\Request;
 
 class TypeController extends Controller
 {
 
     public function index() {
-
-//        $type = \App\Type::all();
-
-        $faker =  \Faker\Factory::create('fr_FR');
-        $types = [];
-
-        for($i = 0; $i < 12; $i++) {
-            $types[] = (object) [
-                'id' => $faker->randomNumber(),
-                'designation' => $faker->sentence(1)
-            ];
-        }
-
-        return view('type/index', ['types' => $types]);
+        return view("types.index", ['types' =>  Type::all()]);
     }
 
     public function show($id) {
-
-//        $type = \App\Offer::findOrFail($id);
-        $type = 'fer';
-
-        return view("type/show", ['type' => $type]);
+        return view("types.show", ['type' => Type::findOrFail($id)]);
     }
 
     public function create() {
-        return view("type/new");
+        return view("types.create", ['type' => new Type()]);
     }
 
-    public function save(\Request $request) {
-
-
+    public function store(Request $request) {
         /* Check if the data are accurate */
         $data = request()->validate([
-            'type-designation' => 'required|max:50',
-            'type-image' => 'image',
+            'designation' => 'required|max:50',
+            'image'       => 'image'
         ]);
 
-        /* Call type model and register the designation */
-//        $type = new \App\Type();
-//        $type->designation = $data['type-designation'];
+        $type = new Type();
+        $type->designation = $data['designation'];
 
         /* Optionnal: save image if there is one */
-        if($data['type-image']) {
+        if($data['image']){
 
-            /* Save the image in the storage */
-            $file = request()->file('type-image');
+            /* Upload the image */
+            $file = request()->file('image');
             $path = $file->store('types');
 
-            /* Register the image path */
-//            $type->image_url = $path;
+            /* Store the image path */
+            $type->image = $path;
         }
 
-        /* Save the model */
-//        $type->save();
+        $type->save();
+        return redirect()->route('types.index')->with([
+            'message' => "Le type $type->designation a bien été enregistré"
+        ]);
+
+    }
+
+    public function edit($id){
+        return view('types.edit', ['type' => Type::findOrFail($id)]);
+    }
 
 
-        $name = $data['type-designation'];
+    public function update($id, Request $request){
+        /* Check if the data are accurate */
+        $data = request()->validate([
+            'designation' => 'required|max:50',
+            'image'       => 'image',
+        ]);
 
-        return redirect('/types')->with([
-            'message' => "Le type $name a bien été enregistré"
+        $type = Type::findOrFail($id);
+        $type->designation = $data['designation'];
+
+        /* Optionnal: save image if there is one */
+        if($data['image']){
+
+            /* Upload the image */
+            $file = request()->file('image');
+            $path = $file->store('types');
+
+            /* Store the image path */
+            $type->image = $path;
+        }
+
+        $type->update();
+
+        return redirect()->route('types.index')->with([
+            'message' => "Le type $type->designation a bien été enregistré"
         ]);
     }
 
-    public function update($id) {
-
-        //        $type = \App\Offer::findOrFail($id);
-        $type = 'fer';
-
-        return view("type/update", ['type' => $type]);
-    }
 
 
 }

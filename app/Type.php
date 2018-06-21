@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * App\Type
  *
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $articles
+ * @property mixed $image
  */
 class Type extends Model
 {
@@ -20,6 +22,16 @@ class Type extends Model
     'designation',
     'image_url',
   ];
+
+  // Surcouche Accesseur set
+  public function setImageAttribute($property){
+      $this->attributes['image_url'] = $property;
+  }
+
+  // Surcouche Accesseur get
+  public function getImageAttribute(){
+      return $this->attributes['image_url'];
+  }
 
   // 1..N
   public function articles(){
