@@ -16,6 +16,17 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            // foreign key for image 1..1
+            $table->integer('matter_id')->unsigned;
+            $table->foreign('matter_id')->references('id')->on('matters');
+            // foreign key for type 1..1
+            $table->integer('type_id')->unsigned;
+            $table->foreign('type_id')->references('id')->on('types');
+            // foreign key for article 1..N
+            $table->integer('article_id')->unsigned;
+            $table->foreign('article_id')->references('id')->on('article');
+
+
         });
     }
 

@@ -16,6 +16,13 @@ class CreateTypesTable extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            // foreign key for image 1..1
+            $table->integer('image_id')->unsigned;
+            $table->foreign('image_id')->references('id')->on('images');
+            // foreign key for article 1..N
+            $table->integer('article_id')->unsigned;
+            $table->foreign('article_id')->references('id')->on('article');
+
         });
     }
 
