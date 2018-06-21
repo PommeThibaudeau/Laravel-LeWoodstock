@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <div class=""><a href="/articles"><button class="btn btn-secondary">Voir les articles</button></a></div>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -72,6 +72,13 @@
                 </div>
             </div>
         </nav>
+        <div class="info">
+          @if(session('message'))
+            <div class="alert alert-info">
+              <strong>{{ session('message') }}</strong>
+            </div>
+          @endif
+        </div>
 
         <main class="py-4">
             @yield('content')
