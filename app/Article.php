@@ -18,6 +18,13 @@ class Article extends Model
   protected $stock;
   protected $price;
 
+  protected $fillable = [
+    'description',
+    'designation',
+    'stock',
+    'price',
+  ];
+
   // 1..N
   public function type(){
     return $this->belongsTo(Type::class);
