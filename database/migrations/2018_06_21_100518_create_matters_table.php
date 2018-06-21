@@ -17,7 +17,7 @@ class CreateMattersTable extends Migration
             $table->increments('id');
             $table->timestamps();
             // foreign key for image 1..1
-            $table->integer('image_id')->unsigned;
+            $table->unsignedInteger('image_id');
             $table->foreign('image_id')->references('id')->on('images');
         });
     }

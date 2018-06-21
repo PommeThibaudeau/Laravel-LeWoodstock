@@ -17,13 +17,13 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             // foreign key for image 1..1
-            $table->integer('matter_id')->unsigned;
+            $table->unsignedInteger('matter_id');
             $table->foreign('matter_id')->references('id')->on('matters');
             // foreign key for type 1..1
-            $table->integer('type_id')->unsigned;
+            $table->unsignedInteger('type_id');
             $table->foreign('type_id')->references('id')->on('types');
             // foreign key for article 1..N
-            $table->integer('article_id')->unsigned;
+            $table->unsignedInteger('article_id');
             $table->foreign('article_id')->references('id')->on('article');
 
 

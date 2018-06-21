@@ -15,4 +15,3 @@ class Type extends Model
       return $this->hasMany(Article::class);
     }
 }
-}
