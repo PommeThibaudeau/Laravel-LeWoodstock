@@ -5,19 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Type
+ * App\Matter
  *
  * @mixin \Eloquent
  */
-class Type extends Model
+class Matter extends Model
 {
   // fields
   protected $id;
   protected $designation;
   protected $image_url;
 
-  // 1..N
-  public function articles(){
-    return $this->hasMany(Article::class);
-  }
+    // N..N
+    public function articles(){
+        return $this->belongsToMany(Matter::class);
+    }
 }
