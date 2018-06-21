@@ -16,6 +16,11 @@ class Type extends Model
   protected $designation;
   protected $image_url;
 
+  protected $fillable = [
+    'designation',
+    'image_url',
+  ];
+
   // 1..N
   public function articles(){
     return $this->hasMany(Article::class);

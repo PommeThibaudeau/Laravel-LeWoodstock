@@ -16,6 +16,11 @@ class Matter extends Model
   protected $designation;
   protected $image_url;
 
+  protected $fillable = [
+    'designation',
+    'image_url',
+  ];
+
     // N..N
     public function articles(){
         return $this->belongsToMany(Matter::class);

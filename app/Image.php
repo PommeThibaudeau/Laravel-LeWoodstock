@@ -15,8 +15,11 @@ class Image extends Model
   // fields
   protected $id;
   protected $src;
-  protected $alt;
   protected $article_id;
+
+  protected $fillable = [
+    'src',
+  ];
 
   // 1..N
   public function article(){
