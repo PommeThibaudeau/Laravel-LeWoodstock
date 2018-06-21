@@ -19,6 +19,7 @@ class Image extends Model
 
   protected $fillable = [
     'src',
+    'article_id',
   ];
 
   // 1..N
