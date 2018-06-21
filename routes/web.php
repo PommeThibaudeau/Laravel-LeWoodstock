@@ -18,3 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/*** Type Routes ***/
+
+Route::get('/types', 'Type\TypeController@index');
+Route::get('/types/show/{id}', 'Type\TypeController@show');
+
+Route::get('/types/create', 'Type\TypeController@create');
+Route::post('/types/create', 'Type\TypeController@save');
+
+Route::get('/types/update/{id}', 'Type\TypeController@update');
+Route::post('/types/update/{id}', 'Type\TypeController@saveUpdate');

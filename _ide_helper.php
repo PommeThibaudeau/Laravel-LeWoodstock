@@ -1155,7 +1155,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Register a new after resolving callback for all types.
+         * Register a new after resolving callback for all type.
          *
          * @param \Closure|string $abstract
          * @param \Closure|null $callback
@@ -7864,10 +7864,10 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Gets the mime types associated with the format.
+         * Gets the mime type associated with the format.
          *
          * @param string $format The format
-         * @return array The associated mime types
+         * @return array The associated mime type
          * @static 
          */ 
         public static function getMimeTypes($format)
@@ -7890,10 +7890,10 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Associates a format with mime types.
+         * Associates a format with mime type.
          *
          * @param string $format The format
-         * @param string|array $mimeTypes The associated mime types (the preferred one must be the first as it will be used as the content type)
+         * @param string|array $mimeTypes The associated mime type (the preferred one must be the first as it will be used as the content type)
          * @static 
          */ 
         public static function setFormat($format, $mimeTypes)
@@ -8151,9 +8151,9 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Gets a list of content types acceptable by the client browser.
+         * Gets a list of content type acceptable by the client browser.
          *
-         * @return array List of content types in preferable order
+         * @return array List of content type in preferable order
          * @static 
          */ 
         public static function getAcceptableContentTypes()
@@ -8194,7 +8194,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Determine if the given content types match.
+         * Determine if the given content type match.
          *
          * @param string $actual
          * @param string $type
