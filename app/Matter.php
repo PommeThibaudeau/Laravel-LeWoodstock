@@ -34,6 +34,6 @@ class Matter extends Model
 
   // N..N
   public function articles(){
-      return $this->belongsToMany(Matter::class);
+      return $this->belongsToMany(Article::class);
   }
 }

@@ -14,6 +14,12 @@
         {{ Form::label('price', 'Prix') }}<br>
         {{ Form::text('price') }}<br>
 
+        {{ Form::label("type", 'Type') }}<br>
+        {{ Form::select("type", $types, null, ['class' => 'chosen-select']) }}<br>
+
+        {{ Form::label("matters", 'Matières') }}<br>
+        {{ Form::select('$matters[]', $matters, null, ['class' => 'chosen-select', 'multiple' => 'multiple']) }}
+
         @for($i=0;$i<5;++$i)
             {{ Form::label("images", 'Images') }}<br>
             {{ Form::file("images[]") }}<br>

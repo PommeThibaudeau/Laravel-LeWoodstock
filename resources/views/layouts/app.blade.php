@@ -12,6 +12,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+
+    <!-- Chosen -->
+    <script src="{{ asset('js/chosen/chosen.jquery.min.js') }}" defer></script>
+    <link href="{{ asset('css/chosen/chosen.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -110,4 +115,9 @@
         </main>
     </div>
 </body>
+<script>
+    $( document ).ready(function() {
+        $(".chosen-select").chosen();
+    });
+</script>
 </html>
