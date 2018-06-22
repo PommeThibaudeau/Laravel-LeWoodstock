@@ -11,6 +11,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $matters
  * @property-read \App\Type $type
+ * @property int $id
+ * @property string $designation
+ * @property string|null $description
+ * @property int|null $stock
+ * @property float|null $price
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property int $type_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereDesignation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereStock($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereUpdatedAt($value)
  */
 class Article extends Model
 {

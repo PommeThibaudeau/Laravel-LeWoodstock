@@ -10,6 +10,16 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  * @property-read \App\Article $article
+ * @property int $id
+ * @property string $src
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property int $article_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereArticleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereSrc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereUpdatedAt($value)
  */
 class Image extends Model
 {
