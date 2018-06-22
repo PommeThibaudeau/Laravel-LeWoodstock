@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/articles/create', 'ArticleController@create')->name('articles.create');
     Route::post('/articles', 'ArticleController@store')->name('articles.store');
     Route::put('/articles/{id}', 'ArticleController@update')->name('articles.update');
+    Route::get('/articles/delete/{id}', 'ArticleController@destroy')->name('articles.delete');
     Route::delete('/articles/{id}', 'ArticleController@destroy')->name('articles.destroy');
 
     // Images
@@ -41,15 +42,17 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/types/create', 'TypeController@create')->name('types.create');
     Route::post('/types', 'TypeController@store')->name('types.store');
     Route::get('/types/edit/{id}', 'TypeController@edit')->name('types.edit');
+    Route::get('/types/delete/{id}', 'TypeController@destroy')->name('types.delete');
     Route::delete('/types/{id}', 'TypeController@destroy')->name('types.destroy');
     Route::put('/types/{id}', 'TypeController@update')->name('types.update');
 
     // Matters
-    Route::get('/matters/create', 'MatterController@create')->name('matters.create');
-    Route::post('/matters', 'MatterController@store')->name('matters.store');
-    Route::get('/matters/edit/{id}', 'MatterController@edit')->name('matters.edit');
-    Route::delete('/matters/{id}', 'MatterController@destroy')->name('matters.destroy');
-    Route::put('/matters/{id}', 'MatterController@update')->name('matters.update');
+    Route::get('/matieres/create', 'MatterController@create')->name('matters.create');
+    Route::post('/matieres', 'MatterController@store')->name('matters.store');
+    Route::get('/matieres/edit/{id}', 'MatterController@edit')->name('matters.edit');
+    Route::get('/matieres/delete/{id}', 'MatterController@destroy')->name('matters.delete');
+    Route::delete('/matieres/{id}', 'MatterController@destroy')->name('matters.destroy');
+    Route::put('/matieres/{id}', 'MatterController@update')->name('matters.update');
 });
 
 /**
@@ -72,8 +75,8 @@ Route::get('/types', 'TypeController@index')->name('types.index');
 /**
  * MATTERS
  */
-Route::get('/matters/{id}', 'MatterController@show')->name('matters.show');
-Route::get('/matters', 'MatterController@index')->name('matters.index');
+Route::get('/matieres/{id}', 'MatterController@show')->name('matters.show');
+Route::get('/matieres', 'MatterController@index')->name('matters.index');
 
 /**
  * AUTHENTIFICATION

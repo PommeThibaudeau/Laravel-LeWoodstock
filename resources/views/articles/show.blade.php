@@ -3,7 +3,6 @@
 @section('content')
     @isset($article)
         <h5 class="card-title">{{ $article->designation }}</h5>
-        <h5 class="card-title">{{ $article->designation }}</h5>
         <p class="card-text">{{ $article->description }}</p>
         <p class="card-text">{{ $article->stock }}</p>
         <p class="card-text">{{ $article->price }}</p>
@@ -20,5 +19,14 @@
                 <img class="card-img-top" data-src="{{ Storage::url($image->src) }}" alt="{{ $article->designation }}" style="height: 180px; width: 180px; display: block;" src="{{ Storage::url($image->src) }}" data-holder-rendered="true">
             @endforeach
         @endif
+
+        <a href="{{ route('articles.edit', ['id' => $article->getKey()]) }}">
+            <i class="fas fa-edit fa-3x"></i>
+        </a>
+
+        <a href="{{ route('articles.delete', ['id' => $article->getKey()]) }}">
+            <i class="fas fa-trash fa-3x"></i>
+        </a>
+
     @endisset
 @endsection
