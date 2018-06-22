@@ -46,3 +46,18 @@ Auth::routes();
  * USERS
  */
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function(){
+  // article
+  Route::get('create', 'ArticleController@create');
+  Route::post('create', 'ArticleController@store');
+
+  Route::get('/articles', function () {
+      $articles = \App\Article::all();
+      return view('/home', ['articles' => $articles]);
+  });
+  Route::get('/articles/{id?}', function ($id="") {
+      $article = \App\Article::findOrFail($id);
+      return view('/show', ['article' => $article]);
+  });
+});
