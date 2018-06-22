@@ -11,7 +11,10 @@ use App\Type;
 class ArticleController extends Controller
 {
     public function index(){
-        return view('articles.index', ['articles' => Article::all()]);
+        return view('articles.index', [
+            'articles' => Article::all(),
+            'types'   => Type::all()->pluck('designation', 'id'),
+            'matters' => Matter::all()->pluck('designation', 'id')]);
     }
 
     public function show($id){
@@ -50,7 +53,7 @@ class ArticleController extends Controller
 
         /* Ids verifications for Matter multiple select */
         $matters = [];
-        foreach($request->input('$matters') as $matter_id){
+        foreach($request->input('matters') as $matter_id){
             Matter::findOrFail($matter_id);
             $matters[] = $matter_id;
         }
@@ -104,7 +107,7 @@ class ArticleController extends Controller
 
         /* Ids verifications for Matter multiple select */
         $matters = [];
-        foreach($request->input('$matters') as $matter_id){
+        foreach($request->input('matters') as $matter_id){
             Matter::findOrFail($matter_id);
             $matters[] = $matter_id;
         }

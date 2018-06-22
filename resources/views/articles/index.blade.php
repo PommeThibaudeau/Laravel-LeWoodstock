@@ -3,6 +3,16 @@
 @section('content')
 
     <div class="container jumbotron index-container">
+
+        {{ Form::model($article, ['method' => 'PUT', 'route' => ['articles.update', $article->id], 'files' => true]) }}
+            {{ Form::label("type", 'Type') }}<br>
+            {{ Form::select("type", $types, $article->type->getKey(), ['class' => 'chosen-select']) }}<br>
+
+            {{ Form::label("matters", 'Matières') }}<br>
+            {{ Form::select('matters[]', $matters, $article->matters()->get(), ['class' => 'chosen-select', 'multiple' => 'multiple']) }}
+
+            {{ Form::submit('Envoyer')}}
+        {{ Form::close() }}
         <h1>Les articles</h1>
         @auth
             <a href="{{ route('articles.create') }}">

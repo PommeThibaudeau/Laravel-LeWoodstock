@@ -18,7 +18,7 @@
         {{ Form::select("type", $types, $article->type->getKey(), ['class' => 'chosen-select']) }}<br>
 
         {{ Form::label("matters", 'Matières') }}<br>
-        {{ Form::select('$matters[]', $matters, $article->matters()->get(), ['class' => 'chosen-select', 'multiple' => 'multiple']) }}
+        {{ Form::select("matters[]", $matters, $article->matters()->get(), ['class' => 'chosen-select', 'multiple' => 'multiple']) }}
 
         @foreach($article->images as $image)
             {{ Form::label("images", 'Image') }}<br>
