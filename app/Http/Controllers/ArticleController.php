@@ -43,18 +43,22 @@ class ArticleController extends Controller
         $article->stock       = $data['stock'];
         $article->price       = $data['price'];
 
+        /* Id verification for Type select */
         Type::findOrFail($data['type']);
         $article->type_id = $data['type'];
-
-        foreach($request->input('$matters') as $matter_id){
-            Matter::findOrFail($matter_id);
-
-            //@TODO HOW THE FUCK CAN I DO THIS
-
-        }
-
         $article->save();
 
+        /* Ids verifications for Matter multiple select */
+        $matters = [];
+        foreach($request->input('$matters') as $matter_id){
+            Matter::findOrFail($matter_id);
+            $matters[] = $matter_id;
+        }
+
+        /* Populate pivot table  */
+        $article->matters()->sync($matters);
+
+        /* Images upload  */
         foreach (request()->file('images') as $image){
             $path = $image->store('images');
             Image::create(['src' => $path, 'article_id' => $article->getKey()]);

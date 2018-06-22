@@ -11,7 +11,7 @@
                         <h5 class="card-title">{{ $article->designation }}</h5>
                         <p class="card-text">{{ $article->description }}</p>
                         <p class="card-text">{{ $article->type->designation }}</p>
-                        @foreach($article->matters as $matter)
+                        @foreach($article->matters()->get() as $matter)
                             <p class="card-text"><small class="text-muted">{{ $matter->designation }}</small></p>
                         @endforeach
                         <a href="{{ route("articles.show",['id' => $article->id]) }}" class="btn btn-primary">En savoir plus</a>

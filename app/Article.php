@@ -41,6 +41,11 @@ class Article extends Model
   }
   // N..N
   public function matters(){
-      return $this->belongsToMany(Matter::class);
+      return $this->belongsToMany(
+          Matter::class,
+          'article_matter',
+          'article_id',
+          'matter_id'
+      )->withTimestamps();
   }
 }
