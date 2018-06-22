@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        
+
                         <div class=""><a href="/articles"><button class="btn btn-secondary">Voir les articles</button></a></div>
 
                         <li class="nav-item">
