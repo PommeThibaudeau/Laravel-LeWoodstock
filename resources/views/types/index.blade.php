@@ -4,7 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
+                <a href="{{ route('types.create') }}">
+                    <i class="fas fa-plus-circle fa-lg">Ajouter un Type</i>
+                </a><br><br>
                 @if (count($types))
 
                     <ul>

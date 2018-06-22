@@ -4,7 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
+                <a href="{{ route('matters.create') }}">
+                    <i class="fas fa-plus-circle fa-lg">Ajouter une Matière</i>
+                </a><br><br>
                 @if (count($matters))
 
                     <ul>
