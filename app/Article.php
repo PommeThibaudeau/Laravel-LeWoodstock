@@ -36,24 +36,32 @@ class Article extends Model
   protected $designation;
   protected $stock;
   protected $price;
+  protected $type_id;
 
   protected $fillable = [
     'description',
     'designation',
     'stock',
     'price',
+    'type_id',
   ];
 
   // 1..N
   public function type(){
     return $this->belongsTo(Type::class);
   }
+
   // N..1
   public function images(){
     return $this->hasMany(Image::class);
   }
   // N..N
   public function matters(){
-      return $this->belongsToMany(Article::class);
+      return $this->belongsToMany(
+          Matter::class,
+          'article_matter',
+          'article_id',
+          'matter_id'
+      )->withTimestamps();
   }
 }
