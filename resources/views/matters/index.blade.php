@@ -5,20 +5,20 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                @if (count($types))
+                @if (count($matters))
 
                     <ul>
-                        @foreach ($types as $type)
+                        @foreach ($matters as $matter)
                             <li>
-                                <a href="{{ route('types.show', ['id' => $type->getKey()]) }}">
-                                    {{ $type->designation }}
+                                <a href="{{ route('matters.show', ['id' => $matter->getKey()]) }}">
+                                    {{ $matter->designation }}
                                 </a>
                             </li>
                         @endforeach
                     </ul>
 
                 @else
-                    <p>Aucun type actuellement</p>
+                    <p>Aucune matière actuellement</p>
                 @endif
 
             </div>
