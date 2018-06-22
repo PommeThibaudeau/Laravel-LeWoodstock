@@ -13,7 +13,7 @@
                 </a>
 
                 <a href="{{ route('matters.delete', ['id' => $matter->getKey()]) }}">
-                    <i class="fas fa-trash fa-3x"></i>
+                    <i class="fas fa-trash-alt fa-3x"></i>
                 </a>
 
             </div>
