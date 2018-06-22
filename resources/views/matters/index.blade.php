@@ -3,9 +3,9 @@
 @section('content')
     <div class="container jumbotron index-container">
         <h1>Les matières</h1>
-        <a href="{{ route('matters.create') }}">
-            <i class="fas fa-plus-circle fa-lg">Ajouter une Matière</i>
-        </a><br><br>
+            <a href="{{ route('matters.create') }}">
+                <i class="fas fa-plus-circle fa-lg">Ajouter une matière</i>
+            </a><br><br>
         <div class="row index-wrapper">
             @if (count($matters))
                 @foreach ($matters as $matter)
