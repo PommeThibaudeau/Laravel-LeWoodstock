@@ -101,11 +101,15 @@
                 </div>
             </div>
         </nav>
+        <div class="info">
+          @if(session('message') !== null)
+            <div class="alert alert-info">
+              <strong>{{ session('message') }}</strong>
+            </div>
+          @endif
+        </div>
 
-        <main class="py-4">
-            @if(session('message') !== null)
-                {{ session('message') }}
-            @endif
+        <main>
 
             @if($errors->any())
                 <div class="alert alert-danger">

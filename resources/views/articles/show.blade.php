@@ -20,13 +20,14 @@
             @endforeach
         @endif
 
-        <a href="{{ route('articles.edit', ['id' => $article->getKey()]) }}">
-            <i class="fas fa-edit fa-3x"></i>
-        </a>
+        @auth
+            <a href="{{ route('articles.edit', ['id' => $article->getKey()]) }}">
+                <i class="fas fa-edit fa-3x"></i>
+            </a>
 
-        <a href="{{ route('articles.delete', ['id' => $article->getKey()]) }}">
-            <i class="fas fa-trash fa-3x"></i>
-        </a>
-
+            <a href="{{ route('articles.delete', ['id' => $article->getKey()]) }}">
+                <i class="fas fa-trash fa-3x"></i>
+            </a>
+        @endauth
     @endisset
 @endsection

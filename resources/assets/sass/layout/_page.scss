@@ -1,0 +1,14 @@
+//html, body, #app {
+//  display: block;
+//  height: 100%;
+//  margin: 0;
+//}
+
+.show-link {
+  text-decoration: none;
+  color: $color-black;
+
+  &:hover {
+    color: $color-black;
+  }
+}

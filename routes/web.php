@@ -31,13 +31,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::delete('/articles/{id}', 'ArticleController@destroy')->name('articles.destroy');
 
     // Images
-    Route::get('/images/edit/{id}', 'ImageController@edit')->name('images.edit');
-    Route::get('/images/create', 'ImageController@create')->name('images.create');
-    Route::post('/images', 'ImageController@store')->name('images.store');
-    Route::put('/images/{id}', 'ImageController@update')->name('images.update');
-    Route::delete('/images/{id}', 'ImageController@destroy')->name('images.destroy');
     Route::get('/images', 'ImageController@index')->name('images.index');
-    
+    Route::get('/images/{id}', 'ImageController@show')->name('images.show');
+
     // Types
     Route::get('/types/create', 'TypeController@create')->name('types.create');
     Route::post('/types', 'TypeController@store')->name('types.store');
@@ -45,6 +41,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/types/delete/{id}', 'TypeController@destroy')->name('types.delete');
     Route::delete('/types/{id}', 'TypeController@destroy')->name('types.destroy');
     Route::put('/types/{id}', 'TypeController@update')->name('types.update');
+    Route::get('/types/{id}', 'TypeController@show')->name('types.show');
+    Route::get('/types', 'TypeController@index')->name('types.index');
 
     // Matters
     Route::get('/matieres/create', 'MatterController@create')->name('matters.create');
@@ -53,6 +51,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/matieres/delete/{id}', 'MatterController@destroy')->name('matters.delete');
     Route::delete('/matieres/{id}', 'MatterController@destroy')->name('matters.destroy');
     Route::put('/matieres/{id}', 'MatterController@update')->name('matters.update');
+    Route::get('/matieres/{id}', 'MatterController@show')->name('matters.show');
+    Route::get('/matieres', 'MatterController@index')->name('matters.index');
 });
 
 /**
@@ -60,23 +60,6 @@ Route::group(['middleware' => ['auth']], function(){
  */
 Route::get('/articles', 'ArticleController@index')->name('articles.index');
 Route::get('/articles/{id}', 'ArticleController@show')->name('articles.show');
-
-/**
- * IMAGES
- */
-Route::get('/images/{id}', 'ImageController@show')->name('images.show');
-
-/**
- * TYPES
- */
-Route::get('/types/{id}', 'TypeController@show')->name('types.show');
-Route::get('/types', 'TypeController@index')->name('types.index');
-
-/**
- * MATTERS
- */
-Route::get('/matieres/{id}', 'MatterController@show')->name('matters.show');
-Route::get('/matieres', 'MatterController@index')->name('matters.index');
 
 /**
  * AUTHENTIFICATION
@@ -87,4 +70,3 @@ Auth::routes();
  * USERS
  */
 Route::get('/home', 'HomeController@index')->name('home');
-

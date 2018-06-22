@@ -78,6 +78,8 @@ class ArticleController extends Controller
     }
 
     public function update($id, Request $request){
+
+        /* Fields verifications */
         $data = request()->validate([
             'designation' => 'required|max:255',
             'description' => 'required|max:255',
@@ -88,6 +90,7 @@ class ArticleController extends Controller
             'matters.*'   => 'required',
         ]);
 
+        /* Populate basic infos*/
         $article =  Article::findOrFail($id);
         $article->designation = $data['designation'];
         $article->description = $data['description'];
@@ -116,6 +119,8 @@ class ArticleController extends Controller
 
         $counter = 0;
         foreach ($images as $id => $image_src){
+
+            /* If image position < objects count in base -> update */
             if(isset($images_inputs[$counter])){
                 $currentImage = $imageModel->find($id);
 
@@ -130,7 +135,7 @@ class ArticleController extends Controller
             ++$counter;
         }
 
-        /* Add images */
+        /* If image position > objects count in base -> create */
         for ($i=$counter; $i<5; ++$i){
             if(isset($images_inputs[$i])){
                 $path = $images_inputs[$counter]->store('images');
