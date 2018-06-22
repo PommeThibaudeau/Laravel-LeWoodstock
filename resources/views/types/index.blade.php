@@ -1,27 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
 
-                @if (count($types))
+    <div class="container jumbotron index-container">
+        <h1>Les types</h1>
+        <br>
+        <div class="row index-wrapper">
 
-                    <ul>
-                        @foreach ($types as $type)
-                            <li>
-                                <a href="{{ route('types.show', ['id' => $type->getKey()]) }}">
-                                    {{ $type->designation }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-
-                @else
-                    <p>Aucun type actuellement</p>
-                @endif
-
-            </div>
+            @if (count($types))
+                @foreach ($types as $type)
+                    <div class="col-sm-4">
+                        <a class="show-link" href="{{ route('types.show', ['id' => $type->getKey()]) }}">
+                            <div class="card index-item">
+                                @if ($type->image_url)
+                                    <img src="storage/{{ $type->image_url }}" alt="{{ $type->designation }}" class="card-img-top">
+                                @endif
+                                <h4 class="index-item-title">{{ $type->designation }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            @else
+                <p>Aucun type actuellement</p>
+            @endif
         </div>
+
     </div>
+
 @endsection

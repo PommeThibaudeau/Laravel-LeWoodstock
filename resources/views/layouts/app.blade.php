@@ -16,7 +16,7 @@
 
     <!-- Chosen -->
     <script src="{{ asset('js/chosen/chosen.jquery.min.js') }}" defer></script>
-    <link href="{{ asset('css/chosen/chosen.min.css') }}" rel="stylesheet" type="text/css">
+{{--    <link href="{{ asset('css/chosen/chosen.min.css') }}" rel="stylesheet" type="text/css">--}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -44,8 +44,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
-                        <div class=""><a href="/articles"><button class="btn btn-secondary">Voir les articles</button></a></div>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('articles.index') }}">{{ __('Articles') }}</a>
@@ -106,7 +104,7 @@
           @endif
         </div>
 
-        <main class="py-4">
+        <main>
             @if(session('message') !== null)
                 {{ session('message') }}
             @endif
