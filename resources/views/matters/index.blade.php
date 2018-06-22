@@ -4,7 +4,11 @@
 
     <div class="container jumbotron index-container">
         <h1>Les matières</h1>
-        <br>
+
+        <a class="index-add-link" href="{{ route('matters.create') }}">
+            <i class="fas fa-plus-circle fa-lg">Ajouter une Matière</i>
+        </a>
+
         <div class="row index-wrapper">
 
             @if (count($matters))

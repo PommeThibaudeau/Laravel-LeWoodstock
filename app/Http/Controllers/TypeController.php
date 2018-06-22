@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Type;
 use Illuminate\Http\Request;
 
@@ -86,10 +87,16 @@ class TypeController extends Controller
 
         $type = Type::findOrFail($id);
         $designation = $type->designation;
-        $type->delete();
+
+        if (Article::whereTypeId($id)->count() > 0){
+            $message = "Des articles sont liés à ce type, supprimez les et réessayez.";
+        }else{
+            $message = "Le type $designation a bien été supprimé";
+            $type->delete();
+        }
 
         return redirect()->route('types.index')->with([
-            'message' => "Le type $designation a bien été supprimé"
+            'message' => $message
         ]);
     }
 

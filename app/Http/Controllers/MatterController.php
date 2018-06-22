@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Matter;
 use Illuminate\Http\Request;
 
@@ -86,10 +87,16 @@ class MatterController extends Controller
 
         $matter = Matter::findOrFail($id);
         $designation = $matter->designation;
-        $matter->delete();
+
+        if ($matter->articles()->where('matter_id', $id)->count() > 0){
+            $message = "Des articles sont liés à cette matière, supprimez les et réessayez.";
+        }else{
+            $message = "La matière $designation a bien été supprimée";
+            $matter->delete();
+        }
 
         return redirect()->route('matters.index')->with([
-            'message' => "La matière $designation a bien été supprimée"
+            'message' => $message
         ]);
     }
 

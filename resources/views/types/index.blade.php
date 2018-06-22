@@ -4,7 +4,11 @@
 
     <div class="container jumbotron index-container">
         <h1>Les types</h1>
-        <br>
+
+        <a class="index-add-link" href="{{ route('types.create') }}">
+            <i class="fas fa-plus-circle fa-lg">Ajouter un Type</i>
+        </a>
+
         <div class="row index-wrapper">
 
             @if (count($types))

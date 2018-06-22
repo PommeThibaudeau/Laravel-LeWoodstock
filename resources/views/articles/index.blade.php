@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="{{ route('articles.create') }}">
+        <i class="fas fa-plus-circle fa-2x">Ajouter un Article</i>
+    </a><br><br>
+
     @if(count($articles))
         <div class="card-columns">
             @foreach ($articles as $article)
@@ -15,6 +19,13 @@
                             <p class="card-text"><small class="text-muted">{{ $matter->designation }}</small></p>
                         @endforeach
                         <a href="{{ route("articles.show",['id' => $article->id]) }}" class="btn btn-primary">En savoir plus</a>
+                        <a href="{{ route('articles.edit', ['id' => $article->getKey()]) }}">
+                            <i class="fas fa-edit fa-2x"></i>
+                        </a>
+
+                        <a href="{{ route('articles.delete', ['id' => $article->getKey()]) }}">
+                            <i class="fas fa-trash fa-2x"></i>
+                        </a>
                     </div>
                 </div>
             @endforeach

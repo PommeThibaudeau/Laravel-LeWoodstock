@@ -15,6 +15,11 @@
 
 /* pages */
 
+.index-add-link {
+  margin: 30px 0;
+  display: block;
+}
+
 .index-item-title {
   padding: 10px 20px;
 }
