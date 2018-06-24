@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function(){
  * ARTICLES
  */
 Route::get('/articles', 'ArticleController@index')->name('articles.index');
+Route::post('/articles', 'ArticleController@index')->name('articles.filter');
 Route::get('/articles/{id}', 'ArticleController@show')->name('articles.show');
 
 /**

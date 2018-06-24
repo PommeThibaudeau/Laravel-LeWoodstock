@@ -10,11 +10,54 @@ use App\Type;
 
 class ArticleController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $articles = Article::all();
+
+        /* Matters Filter */
+        if(!empty($request->input('matters'))){
+            // Matters verification
+            $mattersFilter = collect();
+            foreach($request->input('matters') as $matter_id){
+                Matter::findOrFail($matter_id);
+                $mattersFilter->push($matter_id);
+            }
+
+            // Keep an article if it contains at least one of the matters selected
+            $articles = $articles->filter(function ($item, $key) use($mattersFilter) {
+                $articleMatters = $item->matters->pluck('designation', 'id');
+                $return = false;
+                foreach($articleMatters as $id => $designation){
+                    if( $mattersFilter->contains($id)){
+                        $return = true;
+                    }
+                }
+                return $return;
+            });
+
+            // Flash filter
+            $request->session()->flash('matters_filters', $mattersFilter);
+        }
+
+        /* Type Filter */
+        if(!empty($request->input('type'))){
+            // Type verification
+            Type::findOrFail($request->input('type'));
+
+            $articles = $articles->where('type_id', $request->input('type'));
+
+            // Flash filter
+            $request->session()->flash('type_filters', $request->input('type'));
+        }
+
+        // Types select Build
+        $types = collect([''])->union(Type::all()->pluck('designation', 'id'));
+
         return view('articles.index', [
-            'articles' => Article::all(),
-            'types'   => Type::all()->pluck('designation', 'id'),
-            'matters' => Matter::all()->pluck('designation', 'id')]);
+            'article' => new Article(),
+            'articles' => $articles,
+            'types'   => $types,
+            'matters' => Matter::all()->pluck('designation', 'id')
+        ]);
     }
 
     public function show($id){

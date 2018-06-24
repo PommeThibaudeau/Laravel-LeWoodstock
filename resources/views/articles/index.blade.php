@@ -4,15 +4,16 @@
 
     <div class="container jumbotron index-container">
 
-        {{ Form::model($article, ['method' => 'PUT', 'route' => ['articles.update', $article->id], 'files' => true]) }}
+        {{ Form::model($article, ['method'=> 'POST', 'route' => ['articles.index']]) }}
             {{ Form::label("type", 'Type') }}<br>
-            {{ Form::select("type", $types, $article->type->getKey(), ['class' => 'chosen-select']) }}<br>
+            {{ Form::select("type", $types, null, ['class' => 'chosen-select', 'data-placeholder' => 'Choisissez un type']) }}<br>
 
             {{ Form::label("matters", 'Matières') }}<br>
-            {{ Form::select('matters[]', $matters, $article->matters()->get(), ['class' => 'chosen-select', 'multiple' => 'multiple']) }}
+            {{ Form::select('matters[]', $matters, null, ['class' => 'chosen-select', 'multiple' => 'multiple', 'data-placeholder' => 'Choisissez des matières']) }}
 
             {{ Form::submit('Envoyer')}}
         {{ Form::close() }}
+
         <h1>Les articles</h1>
         @auth
             <a href="{{ route('articles.create') }}">
