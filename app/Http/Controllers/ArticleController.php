@@ -14,10 +14,16 @@ class ArticleController extends Controller
         $articles = Article::all();
 
         /* Matters Filter */
-        if(!empty($request->input('matters'))){
+        $matters_filter = '';
+        if(!empty($request->input('matters')) || $request->session()->exists('matters')){
+
+            $matters_filter = !empty($request->input('matters'))
+                ? $request->input('matters')
+                : $request->session()->get('matters');
+
             // Matters verification
             $mattersFilter = collect();
-            foreach($request->input('matters') as $matter_id){
+            foreach($matters_filter as $matter_id){
                 Matter::findOrFail($matter_id);
                 $mattersFilter->push($matter_id);
             }
@@ -33,20 +39,20 @@ class ArticleController extends Controller
                 }
                 return $return;
             });
-
-            // Flash filter
-            $request->session()->flash('matters_filters', $mattersFilter);
         }
 
         /* Type Filter */
-        if(!empty($request->input('type'))){
+        $type_filter = '';
+        if(!empty($request->input('type')) || $request->session()->exists('type')){
+
+            $type_filter = !empty($request->input('type'))
+                ? $request->input('type')
+                : $request->session()->get('type');
+
             // Type verification
-            Type::findOrFail($request->input('type'));
+            Type::findOrFail($type_filter);
 
-            $articles = $articles->where('type_id', $request->input('type'));
-
-            // Flash filter
-            $request->session()->flash('type_filters', $request->input('type'));
+            $articles = $articles->where('type_id', $type_filter);
         }
 
         // Types select Build
@@ -56,7 +62,9 @@ class ArticleController extends Controller
             'article' => new Article(),
             'articles' => $articles,
             'types'   => $types,
-            'matters' => Matter::all()->pluck('designation', 'id')
+            'type_filter' => $type_filter,
+            'matters' => Matter::all()->pluck('designation', 'id'),
+            'matters_filter' => $matters_filter,
         ]);
     }
 

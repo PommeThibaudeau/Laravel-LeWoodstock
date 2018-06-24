@@ -3,18 +3,23 @@
 @section('content')
 
     <div class="container jumbotron index-container">
+        <h1>Les articles</h1>
 
         {{ Form::model($article, ['method'=> 'POST', 'route' => ['articles.index']]) }}
-            {{ Form::label("type", 'Type') }}<br>
-            {{ Form::select("type", $types, null, ['class' => 'chosen-select', 'data-placeholder' => 'Choisissez un type']) }}<br>
+            {{ Form::label("type", 'Type') }}
+            {{ Form::select("type", $types, $type_filter, ['class' => 'chosen-select', 'data-placeholder' => 'Choisissez un type']) }}
 
-            {{ Form::label("matters", 'Matières') }}<br>
-            {{ Form::select('matters[]', $matters, null, ['class' => 'chosen-select', 'multiple' => 'multiple', 'data-placeholder' => 'Choisissez des matières']) }}
+            {{ Form::label("matters", 'Matières') }}
+            {{ Form::select('matters[]', $matters, $matters_filter, ['class' => 'chosen-select', 'multiple' => 'multiple', 'data-placeholder' => 'Choisissez des matières']) }}
 
-            {{ Form::submit('Envoyer')}}
+            <a href="{{ route('articles.index') }}">
+                <i class="fas fa-sync-alt fa-lg"></i>
+            </a>
+
+            {{ Form::submit('Envoyer') }}
         {{ Form::close() }}
+        
 
-        <h1>Les articles</h1>
         @auth
             <a href="{{ route('articles.create') }}">
                 <i class="fas fa-plus-circle fa-lg">Ajouter un Article</i>
