@@ -14,3 +14,4 @@ yarn-error.log
 .env.php
 .env
 composer.lock
+.phpstorm.meta.php

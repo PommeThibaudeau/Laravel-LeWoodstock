@@ -23,9 +23,9 @@ Route::get('/', function () {
  */
 Route::group(['middleware' => ['auth']], function(){
     // Articles
-    Route::get('/articles/edit/{id}', 'ArticleController@edit')->name('articles.edit');
     Route::get('/articles/create', 'ArticleController@create')->name('articles.create');
     Route::post('/articles/store', 'ArticleController@store')->name('articles.store');
+    Route::get('/articles/edit/{id}', 'ArticleController@edit')->name('articles.edit');
     Route::put('/articles/{id}', 'ArticleController@update')->name('articles.update');
     Route::get('/articles/delete/{id}', 'ArticleController@destroy')->name('articles.delete');
     Route::delete('/articles/{id}', 'ArticleController@destroy')->name('articles.destroy');

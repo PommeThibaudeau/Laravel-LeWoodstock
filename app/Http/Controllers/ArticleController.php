@@ -80,8 +80,8 @@ class ArticleController extends Controller
         }
 
         $articles = $articles->paginate($item_per_page);
+        $page_number = ceil($articles->total()/$articles->perPage());
 
-        $page_number = $articles->total()/$articles->perPage();
         return view('articles.index', [
             'article' => new Article(),
             'articles' => $articles,
@@ -109,12 +109,13 @@ class ArticleController extends Controller
     public function store(Request $request){
         $data = request()->validate([
             'designation' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'stock'       => 'required|numeric',
             'price'       => 'required|numeric',
             'type'        => 'required',
-            'images.*'    => 'image',
-            'matters.*'   => 'required',
+            'matters'     => 'required',
+            'images'      => 'required',
+            'images.*'    => 'mimes:jpg,jpeg,png,bmp',
         ]);
 
         $article = new Article();
@@ -162,12 +163,12 @@ class ArticleController extends Controller
         /* Fields verifications */
         $data = request()->validate([
             'designation' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'stock'       => 'required|numeric',
             'price'       => 'required|numeric',
             'type'        => 'required',
-            'images.*'    => 'image',
-            'matters.*'   => 'required',
+            'matters'     => 'required',
+            'images.*'    => 'mimes:jpg,jpeg,png,bmp',
         ]);
 
         /* Populate basic infos*/

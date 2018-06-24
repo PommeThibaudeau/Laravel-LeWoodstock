@@ -96,9 +96,15 @@
         </nav>
         <div class="info">
           @if(session('message') !== null)
-            <div class="alert alert-info">
-              <strong>{{ session('message') }}</strong>
-            </div>
+            @if(is_array(session('message')) && session('message')[0] === 'error')
+                <div class="alert alert-danger">
+                    <strong>{{ session('message')[1] }}</strong>
+                </div>
+            @else
+                <div class="alert alert-info">
+                  <strong>{{ session('message') }}</strong>
+                </div>
+            @endif
           @endif
         </div>
 
