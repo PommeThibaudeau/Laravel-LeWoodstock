@@ -6,6 +6,8 @@
         <h1>Les articles</h1>
 
         {{ Form::model($article, ['method'=> 'POST', 'route' => ['articles.index']]) }}
+            {{ Form::text("search", $search_filter, ['placeholder' => 'Rechercher']) }}
+
             {{ Form::label("type", 'Type') }}
             {{ Form::select("type", $types, $type_filter, ['class' => 'chosen-select', 'data-placeholder' => 'Choisissez un type']) }}
 
@@ -18,7 +20,6 @@
 
             {{ Form::submit('Envoyer') }}
         {{ Form::close() }}
-        
 
         @auth
             <a href="{{ route('articles.create') }}">

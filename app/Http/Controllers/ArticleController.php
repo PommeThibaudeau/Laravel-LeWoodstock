@@ -11,7 +11,19 @@ use App\Type;
 class ArticleController extends Controller
 {
     public function index(Request $request){
-        $articles = Article::all();
+        $articles = Article::where('id', '>', '0');
+
+        /* Search Filter */
+        $search_filter = '';
+        if(!empty($request->input('search')) || $request->session()->exists('search')){
+
+            $search_filter = !empty($request->input('search'))
+                ? $request->input('search')
+                : $request->session()->get('search');
+
+            // Filter request
+            $articles->where('designation', 'LIKE' ,"%{$search_filter}%");
+        }
 
         /* Matters Filter */
         $matters_filter = '';
@@ -28,16 +40,9 @@ class ArticleController extends Controller
                 $mattersFilter->push($matter_id);
             }
 
-            // Keep an article if it contains at least one of the matters selected
-            $articles = $articles->filter(function ($item, $key) use($mattersFilter) {
-                $articleMatters = $item->matters->pluck('designation', 'id');
-                $return = false;
-                foreach($articleMatters as $id => $designation){
-                    if( $mattersFilter->contains($id)){
-                        $return = true;
-                    }
-                }
-                return $return;
+            // Filter request, keep an article if it contains at least one of the matters selected
+            $articles->whereHas('matters', function($query) use($mattersFilter){
+               $query->whereIn('id', $mattersFilter);
             });
         }
 
@@ -52,16 +57,17 @@ class ArticleController extends Controller
             // Type verification
             Type::findOrFail($type_filter);
 
-            $articles = $articles->where('type_id', $type_filter);
+            // Filter request
+            $articles->where('type_id', $type_filter);
         }
 
-        // Types select Build
-        $types = collect([''])->union(Type::all()->pluck('designation', 'id'));
+        $articles = $articles->get();
 
         return view('articles.index', [
             'article' => new Article(),
             'articles' => $articles,
-            'types'   => $types,
+            'search_filter' => $search_filter,
+            'types'   => collect([''])->union(Type::all()->pluck('designation', 'id')),
             'type_filter' => $type_filter,
             'matters' => Matter::all()->pluck('designation', 'id'),
             'matters_filter' => $matters_filter,
