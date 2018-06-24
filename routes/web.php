@@ -53,6 +53,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::put('/matieres/{id}', 'MatterController@update')->name('matters.update');
     Route::get('/matieres/{id}', 'MatterController@show')->name('matters.show');
     Route::get('/matieres', 'MatterController@index')->name('matters.index');
+
+    // Registration Routes...
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
 });
 
 /**
@@ -65,7 +69,16 @@ Route::get('/articles/{id}', 'ArticleController@show')->name('articles.show');
 /**
  * AUTHENTIFICATION
  */
-Auth::routes();
+// Authentication Routes...
+Route::get('adminConnection', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('adminConnection', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 /**
  * USERS
