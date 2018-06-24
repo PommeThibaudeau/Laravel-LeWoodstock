@@ -11,7 +11,19 @@ use App\Type;
 class ArticleController extends Controller
 {
     public function index(Request $request){
+
+        // Paginate
+        $item_per_page = 9;
+
+        // Base request
         $articles = Article::where('id', '>', '0');
+
+        /* Reset filters */
+        if(!empty($request->input('reset'))){
+            $request->session()->forget('search');
+            $request->session()->forget('matters');
+            $request->session()->forget('type');
+        }
 
         /* Search Filter */
         $search_filter = '';
@@ -20,6 +32,8 @@ class ArticleController extends Controller
             $search_filter = !empty($request->input('search'))
                 ? $request->input('search')
                 : $request->session()->get('search');
+
+            $request->session()->put('search', $search_filter);
 
             // Filter request
             $articles->where('designation', 'LIKE' ,"%{$search_filter}%");
@@ -40,6 +54,8 @@ class ArticleController extends Controller
                 $mattersFilter->push($matter_id);
             }
 
+            $request->session()->put('matters', $matters_filter);
+
             // Filter request, keep an article if it contains at least one of the matters selected
             $articles->whereHas('matters', function($query) use($mattersFilter){
                $query->whereIn('id', $mattersFilter);
@@ -57,15 +73,19 @@ class ArticleController extends Controller
             // Type verification
             Type::findOrFail($type_filter);
 
+            $request->session()->put('type', $type_filter);
+
             // Filter request
             $articles->where('type_id', $type_filter);
         }
 
-        $articles = $articles->get();
+        $articles = $articles->paginate($item_per_page);
 
+        $page_number = $articles->total()/$articles->perPage();
         return view('articles.index', [
             'article' => new Article(),
             'articles' => $articles,
+            'page_number' => $page_number,
             'search_filter' => $search_filter,
             'types'   => collect([''])->union(Type::all()->pluck('designation', 'id')),
             'type_filter' => $type_filter,
