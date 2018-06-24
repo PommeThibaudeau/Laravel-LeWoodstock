@@ -7,7 +7,7 @@
     {{ Form::model($matter, ['method' => 'PUT', 'route' => ['matters.update', $matter->getKey()], 'files' => true]) }}
         {{ Form::label('designation', 'Designation') }}<br>
         {{ Form::text('designation') }}<br>
-
+        <span class="text-danger">{{ $errors->first('designation') }}</span><br>
 
         {{ Form::label('image', 'Image') }}<br>
         <img class="card-img-top" data-src="{{ Storage::url($matter->image) }}" alt="{{ $matter->designation }}" style="height: 180px; width: 180px; display: block;" src="{{ Storage::url($matter->image) }}" data-holder-rendered="true">

@@ -25,7 +25,7 @@ class MatterController extends Controller
         /* Check if the data are accurate */
         $data = request()->validate([
             'designation' => 'required|max:50',
-            'image'       => 'image'
+            'image'       => 'required|mimes:jpg,jpeg,png,bmp'
         ]);
 
         $matter = new Matter();
@@ -59,7 +59,7 @@ class MatterController extends Controller
         /* Check if the data are accurate */
         $data = request()->validate([
             'designation' => 'required|max:50',
-            'image'       => 'image',
+            'image'       => 'mimes:jpg,jpeg,png,bmp',
         ]);
 
         $matter = Matter::findOrFail($id);

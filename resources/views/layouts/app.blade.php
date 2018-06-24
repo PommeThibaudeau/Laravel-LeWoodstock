@@ -109,18 +109,6 @@
         </div>
 
         <main>
-
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <strong> {{ 'Erreurs dans le formulaire : '}} </strong>
-                </div>
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li> {{ $error }} </li>
-                    @endforeach
-                </ul>
-            @endif
-
             @yield('content')
         </main>
     </div>

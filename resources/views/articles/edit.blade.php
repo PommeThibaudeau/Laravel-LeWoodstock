@@ -4,21 +4,27 @@
     {{ Form::model($article, ['method' => 'PUT', 'route' => ['articles.update', $article->id], 'files' => true]) }}
         {{ Form::label('designation', 'Désignation') }}<br>
         {{ Form::text('designation') }}<br>
+        <span class="text-danger">{{ $errors->first('designation') }}</span><br>
 
         {{ Form::label('description', 'Description') }}<br>
         {{ Form::textarea('description') }}<br>
+        <span class="text-danger">{{ $errors->first('description') }}</span><br>
 
         {{ Form::label('stock', 'Stock') }}<br>
         {{ Form::text('stock') }}<br>
+        <span class="text-danger">{{ $errors->first('stock') }}</span><br>
 
         {{ Form::label('price', 'Prix') }}<br>
         {{ Form::text('price') }}<br>
+        <span class="text-danger">{{ $errors->first('price') }}</span><br>
 
         {{ Form::label("type", 'Type') }}<br>
         {{ Form::select("type", $types, $article->type->getKey(), ['class' => 'chosen-select']) }}<br>
+        <span class="text-danger">{{ $errors->first('type') }}</span><br>
 
         {{ Form::label("matters", 'Matières') }}<br>
         {{ Form::select("matters[]", $matters, $article->matters()->get(), ['class' => 'chosen-select', 'multiple' => 'multiple']) }}
+        <span class="text-danger">{{ $errors->first('matters') }}</span><br>
 
         @foreach($article->images as $image)
             {{ Form::label("images", 'Image') }}<br>
