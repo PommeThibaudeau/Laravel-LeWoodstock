@@ -36,22 +36,30 @@
             @foreach ($articles as $article)
                 <div class="col-sm-4">
                     <div class="card index-item">
+                        @if( $article->stock == 0)
+                            <i class="fas fa-ban fa-lg"></i>
+                        @endif
                         <img data-src="{{ Storage::url($article->images[0]->src) }}" alt="{{ $article->images[0]->alt }}" style="height: 180px; width: 180px; display: block;" src="{{ Storage::url($article->images[0]->src) }}" data-holder-rendered="true">
                         <h5>{{ $article->designation }}</h5>
                         <p>{{ $article->description }}</p>
+                        @if( $article->stock > 0)
+                            <p>{{ $article->stock }}</p>
+                        @endif
                         <p>{{ $article->type->designation }}</p>
                         @foreach($article->matters()->get() as $matter)
                             <span><small class="text-muted">{{ $matter->designation }}</small></span>
                         @endforeach
 
-                        <a href="{{ route("articles.show",['id' => $article->getKey()]) }}" class="btn btn-primary show-link">En savoir plus</a>
+                        <a href="{{ route("articles.show",['id' => $article->getKey()]) }}" class="btn btn-primary show-link">
+                            En savoir plus
+                        </a>
 
                         @auth
                             <a href="{{ route('articles.edit', ['id' => $article->getKey()]) }}">
-                                <i class="fas fa-edit fa-2x"></i>
+                                <i class="fas fa-edit fa-lg"></i>
                             </a>
                             <a href="{{ route('articles.delete', ['id' => $article->getKey()]) }}">
-                                <i class="fas fa-trash fa-2x"></i>
+                                <i class="fas fa-trash fa-lg"></i>
                             </a>
                         @endauth
                     </div>
