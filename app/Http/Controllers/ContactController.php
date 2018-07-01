@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Contact;
+use App\Mail\ContactMailer;
 use App\Article;
 
 class ContactController extends Controller
@@ -21,7 +23,7 @@ class ContactController extends Controller
             $message = "\n\n\n\n\n\n Création ciblée : ".$article->designation;
         }
 
-        return view('contact.create', [
+        return view('contacts.create', [
             'message' => $message,
         ]);
     }
@@ -38,8 +40,12 @@ class ContactController extends Controller
             'message' => 'required'
         ]);
 
-        Contact::create($data);
+        $contact = Contact::create($data);
 
-        return back()->with('success', 'Merci !');
+        Mail::to($request->user())->send(new ContactMailer($contact));
+
+        return redirect('contacts')->with([
+            'message' => "Merci pour le message, on vous répond dès que possible !"
+        ]);
     }
 }

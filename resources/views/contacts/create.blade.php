@@ -10,7 +10,7 @@
             </div>
         @endif
 
-        {{ Form::open(['route'=>'contact.store']) }}
+        {{ Form::open(['route'=>'contacts.store']) }}
 
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 {{ Form::label('Name:') }}
