@@ -41,9 +41,13 @@
                     <div class="col-md-4 col-sm-6 index__item portfolio-item">
                         <div class="card h-100">
                             @if( $article->stock == 0)
-                                <i class="fas fa-ban fa-lg"></i>
+                                <div class="index__item__soldout">
+                                    <i class="fas fa-ban fa-lg"></i>
+                                </div>
                             @endif
-                            <img class="card-img-top" data-src="{{ Storage::url($article->images[0]->src) }}" alt="{{ $article->images[0]->alt }}" style="height: 180px; width: 180px; display: block;" src="{{ Storage::url($article->images[0]->src) }}" data-holder-rendered="true">
+                            <div class="index__item__image">
+                                <img class="card-img-top" data-src="{{ Storage::url($article->images[0]->src) }}" alt="{{ $article->images[0]->alt }}" src="{{ Storage::url($article->images[0]->src) }}" data-holder-rendered="true">
+                            </div>
                             <div class="card-body">
                                 <h4 class="card-title">{{ $article->designation }}</h4>
                                 <p class="card-text">{{ $article->description }}</p>
@@ -79,6 +83,7 @@
                         </div>
                     </div>
                 @endforeach
+        </div>
 
                 @if($page_number > 1)
                     <ul class="pagination justify-content-center">
@@ -109,7 +114,6 @@
                 <p>Aucun article actuellement</p>
             @endif
 
-        </div>
     </div>
 
 @endsection

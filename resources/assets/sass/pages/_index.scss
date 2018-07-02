@@ -21,8 +21,19 @@
 
   &__item {
     position: relative;
+    margin: 10px 0;
+    &__soldout{
+      position: absolute;
+      top:0;
+    }
     &__title {
       padding: 10px 20px;
+    }
+    &__image {
+      background-size: cover;
+      overflow: hidden;
+      height:40%;
+      display: block;
     }
     &__buttons{
       position: absolute;

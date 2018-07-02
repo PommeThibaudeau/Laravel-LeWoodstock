@@ -10998,10 +10998,23 @@ a.text-dark:focus {
 
 .index__item {
   position: relative;
+  margin: 10px 0;
+}
+
+.index__item__soldout {
+  position: absolute;
+  top: 0;
 }
 
 .index__item__title {
   padding: 10px 20px;
+}
+
+.index__item__image {
+  background-size: cover;
+  overflow: hidden;
+  height: 40%;
+  display: block;
 }
 
 .index__item__buttons {
