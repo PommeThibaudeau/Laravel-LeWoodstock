@@ -1,9 +1,9 @@
-Vous avez reçu un message de : {{ $contact->name }}
+Vous avez reçu un message de : {{ $contactName }}
 
 <p>
-    Email: {{ $contact->email }}
+    Email: {{ $contactEmail }}
 </p>
 
 <p>
-    Message: {{ $contact->message }}
+    Message: {{ $contactMessage }}
 </p>

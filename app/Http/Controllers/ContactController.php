@@ -41,8 +41,7 @@ class ContactController extends Controller
         ]);
 
         $contact = Contact::create($data);
-
-        Mail::to($request->user())->send(new ContactMailer($contact));
+        Mail::send(new ContactMailer($contact));
 
         return redirect('contacts')->with([
             'message' => "Merci pour le message, on vous répond dès que possible !"

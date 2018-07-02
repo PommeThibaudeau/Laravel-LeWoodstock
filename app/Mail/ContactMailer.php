@@ -30,8 +30,10 @@ class ContactMailer extends Mailable
      * @return $this
      */
     public function build(){
-
-        return $this->view('contacts.email');
-
+        return $this->view('contacts.email')->with([
+            'contactName' => $this->contact->name,
+            'contactEmail' => $this->contact->email,
+            'contactMessage' => $this->contact->message,
+        ]);
     }
 }
