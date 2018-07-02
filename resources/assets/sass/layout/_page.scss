@@ -12,3 +12,49 @@
     color: $color-black;
   }
 }
+
+.parallax {
+  /* The image used */
+  background-image: url("/storage/global/banniere.jpg");
+
+  /* Set a specific height */
+  height: 425px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: top;
+  background-size: 100%;
+
+  //@media only screen and (max-device-width: 1366px) {
+  //    background-attachment: scroll;
+  //}
+}
+
+.nav-colored{
+
+  position: fixed !important;
+  width: 100% !important;
+  background: white !important;
+  z-index: 100;
+  border-bottom: 1px solid $color-primary;
+
+  &__home-title{
+    color: $color-secondary !important;
+    &:hover{
+      color: $color-secondary-darker !important;
+    }
+  }
+  &__page-title{
+    color: $color-primary-light !important;
+    &:hover{
+      color: $color-primary-dark !important;
+    }
+  }
+}
+
+.footer-colored{
+  border-top: 1px solid $color-primary;
+  width: 100% !important;
+
+}
+

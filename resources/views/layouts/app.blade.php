@@ -16,7 +16,7 @@
 
     <!-- Chosen -->
     <script src="{{ asset('js/chosen/chosen.jquery.min.js') }}" defer></script>
-    <link href="{{ asset('css/chosen/chosen.min.css') }}" rel="stylesheet" type="text/css">
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -26,20 +26,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/chosen/chosen-bootstrap.css') }}" rel="stylesheet" type="text/css">
 
+    <!-- Global -->
+    <link rel="icon" href="/storage/global/favicon.ico" />
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light nav-colored">
             <div class="container">
                 @auth
-                    <a class="navbar-brand" href="{{ url('/home') }}">
+                    <a class="navbar-brand nav-colored__home-title" href="{{ url('/home') }}">
                         {{ config('app.name') }}
                     </a>
                 @else
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand nav-colored__home-title" href="{{ url('/') }}">
                         {{ config('app.name') }}
                     </a>
                 @endauth
@@ -52,18 +54,18 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('articles.index') }}">{{ __('Articles') }}</a>
+                            <a class="nav-link nav-colored__page-title" href="{{ route('articles.index') }}">{{ __('Articles') }}</a>
                         </li>
 
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('matters.index') }}">{{ __('Matieres') }}</a>
+                                <a class="nav-link nav-colored__page-title" href="{{ route('matters.index') }}">{{ __('Matieres') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('types.index') }}">{{ __('Types') }}</a>
+                                <a class="nav-link nav-colored__page-title" href="{{ route('types.index') }}">{{ __('Types') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('images.index') }}">{{ __('Images') }}</a>
+                                <a class="nav-link nav-colored__page-title" href="{{ route('images.index') }}">{{ __('Images') }}</a>
                             </li>
                         @endauth
                     </ul>
@@ -107,10 +109,33 @@
             @endif
           @endif
         </div>
+        <div class="parallax"></div>
 
         <main>
-            @yield('content')
+            <div class="container">
+                @yield('content')
+            </div>
         </main>
+
+        <footer class="page-footer font-small blue pt-4 mt-4 footer-colored">
+
+            <!-- Footer Links -->
+            <div class="container-fluid text-center text-md-left">
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-6 mt-md-0 mt-3">
+                        <p>Here you can use rows and columns here to organize your footer content.</p>
+                    </div>
+
+                    <hr class="clearfix w-100 d-md-none pb-3">
+                </div>
+            </div>
+
+        </footer>
+        <!-- Footer -->
     </div>
 </body>
 <script>

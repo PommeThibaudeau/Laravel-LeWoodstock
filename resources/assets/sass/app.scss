@@ -1,6 +1,12 @@
 /* helpers */
 @import "helpers/variables";
 
+/* bootstrap */
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+/* chosen */
+@import "chosen/chosen";
+
 /* layout */
 @import "layout/page";
 

@@ -1,9 +1,47 @@
 .index {
+  &__title{
+    color: $color-primary;
+  }
 
-  &-item {
+  &__filterbar{
+    position: relative;
+    margin-bottom: 30px;
+    &__buttons{
+      position: absolute;
+      right: 0;
+      &__item{
+        display: inline-block;
+      }
+    }
+    &__fields{
+      position: absolute;
+      left: 0;
+    }
+  }
 
-    &-title {
+  &__item {
+    position: relative;
+    &__title {
       padding: 10px 20px;
+    }
+    &__buttons{
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      &--right{
+        bottom: 0;
+        position: absolute;
+        right: 30px;
+      }
+    }
+  }
+
+  &__form{
+    &__type{
+      min-width: 150px !important;
+    }
+    &__matter{
+      min-width: 150px !important;
     }
   }
 }

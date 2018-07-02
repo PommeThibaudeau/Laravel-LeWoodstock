@@ -1,5 +1,16 @@
 /* Colors */
 $color-black: #000000;
 
+$color-primary: #FE5200;
+$color-primary-light: lighten($color-primary, 10%);
+$color-primary-lighter: lighten($color-primary, 20%);
+$color-primary-dark: darken($color-primary, 10%);
+$color-primary-darker: darken($color-primary, 20%);
 
+$color-secondary: #45413E;
+$color-secondary-light: lighten($color-secondary, 10%);
+$color-secondary-lighter: lighten($color-secondary, 20%);
+$color-secondary-dark: darken($color-secondary, 10%);
+$color-secondary-darker: darken($color-secondary, 20%);
 
+$color-grey: #E3E3E3;
