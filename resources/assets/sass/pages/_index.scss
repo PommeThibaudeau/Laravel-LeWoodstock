@@ -6,16 +6,16 @@
   &__filterbar{
     position: relative;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+    &__form{
+      align-items: normal;
+    }
     &__buttons{
-      position: absolute;
-      right: 0;
-      &__item{
-        display: inline-block;
-      }
+      display: inline-flex;
     }
     &__fields{
-      position: absolute;
-      left: 0;
+      display: inline-flex;
     }
   }
 
@@ -49,10 +49,10 @@
 
   &__form{
     &__type{
-      min-width: 150px !important;
+      min-width: 180px !important;
     }
     &__matter{
-      min-width: 150px !important;
+      min-width: 180px !important;
     }
   }
 }

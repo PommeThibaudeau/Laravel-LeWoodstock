@@ -6,7 +6,7 @@
         <h1 class="my-4 index__title">Les créations</h1>
 
         <div class="index__filterbar">
-            {{ Form::model($article, ['class' => 'form-inline', 'method' => 'POST', 'route' => ['articles.index']]) }}
+            {{ Form::model($article, ['class' => 'form-inline index__filterbar__form', 'method' => 'POST', 'route' => ['articles.index']]) }}
             {{ Form::text("search", $search_filter, ['class' => 'form-control', 'placeholder' => 'Rechercher']) }}
 
             {{ Form::select("type", $types, $type_filter, ['class' => 'chosen-select form-control index__form__type', 'data-placeholder' => 'Choisissez un type']) }}
@@ -15,21 +15,19 @@
 
             <div class="index__filterbar__buttons">
                 <!-- SEND FILTERS BUTTON -->
-                {{ Form::submit('Envoyer', ['class' => 'btn btn-primary index__filterbar__buttons__item']) }}
+                {{ Form::submit('Envoyer', ['class' => 'btn btn-primary']) }}
                 {{ Form::close() }}
 
                 <!-- REFRESH BUTTON -->
-                {{ Form::open(['route' => ['articles.index'], 'class' => 'form-inline index__filterbar__buttons__item']) }}
+                {{ Form::open(['route' => ['articles.index'], 'class' => 'form-inline index__filterbar__form']) }}
                     <button class="btn btn-primary" type="submit" name="reset" value="reset">
                         <i class="fas fa-sync-alt fa-lg"></i>
                     </button>
                 {{ Form::close() }}
 
-                <!-- REFRESH BUTTON -->
-
                 @auth
                     <a href="{{ route('articles.create') }}" class="form-inline index__filterbar__buttons__item">
-                        <h3><span class="btn btn-primary">Ajouter</span></h3>
+                        <h3><span class="btn btn-outline-primary">Ajouter</span></h3>
                     </a>
                 @endauth
             </div>
@@ -63,7 +61,7 @@
 
                                 <div class="index__item__buttons">
                                     <div class="index__item__buttons--left">
-                                        <a href="{{ route("articles.show",['id' => $article->getKey()]) }}" class="btn btn-primary show-link">
+                                        <a href="{{ route("articles.show",['id' => $article->getKey()]) }}" class="btn btn-outline-primary">
                                             En savoir plus
                                         </a>
                                     </div>
