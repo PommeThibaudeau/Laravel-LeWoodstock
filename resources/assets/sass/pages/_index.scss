@@ -7,15 +7,22 @@
     position: relative;
     margin-bottom: 30px;
     display: flex;
-    justify-content: space-around;
+    width:100%;
+    @media only screen and (max-device-width: 1024px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     &__form{
+      display: flex;
       align-items: normal;
-    }
-    &__buttons{
-      display: inline-flex;
-    }
-    &__fields{
-      display: inline-flex;
+      @media only screen and (max-device-width: 1024px) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      &__item{
+        width: 200px;
+      }
     }
   }
 
@@ -55,4 +62,11 @@
       min-width: 180px !important;
     }
   }
+}
+
+.push{
+  margin-left: auto;
+}
+.no-wrap {
+  white-space: nowrap;
 }

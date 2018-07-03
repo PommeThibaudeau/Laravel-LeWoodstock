@@ -49,6 +49,9 @@
 
 /* @group Single Chosen */
 .chosen-container-single{
+  margin-left: 0.25em !important;
+  margin-right: 0.25em !important;
+  width: 200px !important;
   .chosen-single {
     position: relative;
     display: block;
@@ -198,13 +201,16 @@
 
 /* @group Multi Chosen */
 .chosen-container-multi{
+  margin-left: 0.25em !important;
+  margin-right: 0.25em !important;
+  width: 200px !important;
   .chosen-choices {
     position: relative;
     overflow: hidden;
     margin: 0;
     padding: 0 5px;
     width: 100%;
-    height: auto;
+    height: 100%;
     border: 1px solid #aaa;
     background-color: #fff;
     background-image: linear-gradient(#eee 1%, #fff 15%);
@@ -214,6 +220,7 @@
     float: left;
     list-style: none;
     &.search-field {
+      min-width: 350px;
       margin: 0;
       padding: 0;
       white-space: nowrap;

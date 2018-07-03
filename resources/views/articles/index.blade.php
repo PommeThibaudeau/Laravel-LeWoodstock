@@ -6,31 +6,31 @@
         <h1 class="my-4 index__title">Les créations</h1>
 
         <div class="index__filterbar">
-            {{ Form::model($article, ['class' => 'form-inline index__filterbar__form', 'method' => 'POST', 'route' => ['articles.index']]) }}
-            {{ Form::text("search", $search_filter, ['class' => 'form-control', 'placeholder' => 'Rechercher']) }}
+            {{ Form::model($article, ['class' => ' index__filterbar__form', 'method' => 'POST', 'route' => ['articles.index']]) }}
 
-            {{ Form::select("type", $types, $type_filter, ['class' => 'chosen-select form-control index__form__type', 'data-placeholder' => 'Choisissez un type']) }}
+                {{ Form::text("search", $search_filter, ['class' => 'form-control mx-1 index__filterbar__form__item', 'placeholder' => 'Rechercher']) }}
+                {{ Form::select("type", $types, $type_filter, ['class' => 'chosen-select form-control mx-1 index__filterbar__form__item index__form__type', 'data-placeholder' => 'Choisissez un type']) }}
+                {{ Form::select('matters[]', $matters, $matters_filter, ['class' => 'chosen-select form-control mx-1 index__filterbar__form__item index__form__matter', 'multiple' => 'multiple', 'data-placeholder' => 'Choisissez des matières']) }}
 
-            {{ Form::select('matters[]', $matters, $matters_filter, ['class' => 'chosen-select form-control index__form__matter', 'multiple' => 'multiple', 'data-placeholder' => 'Choisissez des matières']) }}
-
-            <div class="index__filterbar__buttons">
-                <!-- SEND FILTERS BUTTON -->
-                {{ Form::submit('Envoyer', ['class' => 'btn btn-primary']) }}
-                {{ Form::close() }}
-
-                <!-- REFRESH BUTTON -->
-                {{ Form::open(['route' => ['articles.index'], 'class' => 'form-inline index__filterbar__form']) }}
-                    <button class="btn btn-primary" type="submit" name="reset" value="reset">
+                <div class="no-wrap">
+                    <!-- REFRESH BUTTON -->
+                    <a href="{{ route('articles.index', ['reset' => 'true' ]) }}" class="btn btn-primary mx-1">
                         <i class="fas fa-sync-alt fa-lg"></i>
-                    </button>
-                {{ Form::close() }}
-
-                @auth
-                    <a href="{{ route('articles.create') }}" class="form-inline index__filterbar__buttons__item">
-                        <h3><span class="btn btn-outline-primary">Ajouter</span></h3>
                     </a>
-                @endauth
-            </div>
+
+                    <!-- SEND FILTERS BUTTON -->
+                    {{ Form::submit('Envoyer', ['class' => 'btn btn-primary mx-1 index__filterbar__form__item']) }}
+                </div>
+
+            {{ Form::close() }}
+
+
+
+            @auth
+                <a href="{{ route('articles.create') }}" class="push">
+                    <span class="btn btn-outline-primary">Ajouter</span>
+                </a>
+            @endauth
         </div>
 
         <div class="row">
@@ -69,10 +69,10 @@
                                     @auth
                                         <div class="index__item__buttons--right">
                                             <a href="{{ route('articles.edit', ['id' => $article->getKey()]) }}">
-                                                <i class="fas fa-edit fa-lg"></i>
+                                                <i class="fas fa-edit fa-2x"></i>
                                             </a>
                                             <a href="{{ route('articles.delete', ['id' => $article->getKey()]) }}">
-                                                <i class="fas fa-trash fa-lg"></i>
+                                                <i class="fas fa-trash fa-2x"></i>
                                             </a>
                                         </div>
                                     @endauth

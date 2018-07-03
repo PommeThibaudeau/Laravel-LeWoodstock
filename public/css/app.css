@@ -10483,6 +10483,12 @@ a.text-dark:focus {
 
 /* @group Single Chosen */
 
+.chosen-container-single {
+  margin-left: 0.25em !important;
+  margin-right: 0.25em !important;
+  width: 200px !important;
+}
+
 .chosen-container-single .chosen-single {
   position: relative;
   display: block;
@@ -10657,13 +10663,19 @@ a.text-dark:focus {
 
 /* @group Multi Chosen */
 
+.chosen-container-multi {
+  margin-left: 0.25em !important;
+  margin-right: 0.25em !important;
+  width: 200px !important;
+}
+
 .chosen-container-multi .chosen-choices {
   position: relative;
   overflow: hidden;
   margin: 0;
   padding: 0 5px;
   width: 100%;
-  height: auto;
+  height: 100%;
   border: 1px solid #aaa;
   background-color: #fff;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #eee), color-stop(15%, #fff));
@@ -10677,6 +10689,7 @@ a.text-dark:focus {
 }
 
 .chosen-container-multi .chosen-choices li.search-field {
+  min-width: 350px;
   margin: 0;
   padding: 0;
   white-space: nowrap;
@@ -10934,6 +10947,7 @@ a.text-dark:focus {
 .parallax {
   /* The image used */
   background-image: url("/storage/global/banniere.jpg");
+  background-size: contain;
   /* Set a specific height */
   min-height: 413px;
   width: 100%;
@@ -10944,9 +10958,21 @@ a.text-dark:focus {
   border-bottom: 1px solid #FE5200;
 }
 
-@media only screen and (min-device-width: 1024px) {
+@media only screen and (min-device-width: 769px) {
   .parallax {
-    background-size: auto 100%;
+    min-height: 285px;
+  }
+}
+
+@media only screen and (min-device-width: 1025px) {
+  .parallax {
+    height: 380px;
+  }
+}
+
+@media only screen and (min-device-width: 1441px) {
+  .parallax {
+    height: 535px;
   }
 }
 
@@ -10955,12 +10981,6 @@ a.text-dark:focus {
     background-attachment: scroll;
     background-size: cover;
     height: 300px;
-  }
-}
-
-@media only screen and (min-device-width: 1025px) {
-  .parallax {
-    height: 525px;
   }
 }
 
@@ -11009,26 +11029,40 @@ a.text-dark:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  width: 100%;
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .index__filterbar {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .index__filterbar__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: normal;
       -ms-flex-align: normal;
           align-items: normal;
 }
 
-.index__filterbar__buttons {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+@media only screen and (max-device-width: 1024px) {
+  .index__filterbar__form {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
-.index__filterbar__fields {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+.index__filterbar__form__item {
+  width: 200px;
 }
 
 .index__item {
@@ -11070,6 +11104,14 @@ a.text-dark:focus {
 
 .index__form__matter {
   min-width: 180px !important;
+}
+
+.push {
+  margin-left: auto;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 .show-container h1 {
