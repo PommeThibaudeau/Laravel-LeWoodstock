@@ -18,18 +18,31 @@
   background-image: url("/storage/global/banniere.jpg");
 
   /* Set a specific height */
-  height: 425px;
-
+  min-height: 413px;
+  width:100%;
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: top;
-  background-size: 100%;
-
+  background-repeat: no-repeat;
   border-bottom: 1px solid $color-primary;
 
-  //@media only screen and (max-device-width: 1366px) {
-  //    background-attachment: scroll;
-  //}
+  @media only screen and (min-device-width: 1024px) {
+    background-size: auto 100%;
+  }
+
+  @media only screen and (max-device-width: 768px) {
+    background-attachment: scroll;
+    background-size: cover;
+    height: 300px;
+  }
+
+  @media only screen and (min-device-width: 1025px) {
+    height: 525px;
+  }
+}
+
+.nav-placeholder{
+  height: 57px;
 }
 
 .nav-colored{
