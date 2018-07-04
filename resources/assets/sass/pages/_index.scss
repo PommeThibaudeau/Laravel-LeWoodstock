@@ -8,7 +8,7 @@
     margin-bottom: 30px;
     display: flex;
     width:100%;
-    @media only screen and (max-device-width: 1024px) {
+    @media only screen and (max-width: 1024px) {
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -16,7 +16,7 @@
     &__form{
       display: flex;
       align-items: normal;
-      @media only screen and (max-device-width: 1024px) {
+      @media only screen and (max-width: 1024px) {
         flex-wrap: wrap;
         justify-content: center;
       }

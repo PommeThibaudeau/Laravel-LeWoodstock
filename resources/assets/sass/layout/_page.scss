@@ -27,9 +27,9 @@
   background-repeat: no-repeat;
   border-bottom: 1px solid $color-primary;
 
-  @media only screen and (min-device-width: 769px) {  min-height: 285px;  }
-  @media only screen and (min-device-width: 1025px) {  height: 380px;  }
-  @media only screen and (min-device-width: 1441px) {  height: 535px;  }
+  @media only screen and (min-width: 769px) {  min-height: 285px;  }
+  @media only screen and (min-width: 1025px) {  height: 380px;  }
+  @media only screen and (min-width: 1441px) {  height: 535px;  }
 
   @media only screen and (max-device-width: 768px) {
     background-attachment: scroll;

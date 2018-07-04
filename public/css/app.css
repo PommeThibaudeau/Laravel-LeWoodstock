@@ -10958,19 +10958,19 @@ a.text-dark:focus {
   border-bottom: 1px solid #FE5200;
 }
 
-@media only screen and (min-device-width: 769px) {
+@media only screen and (min-width: 769px) {
   .parallax {
     min-height: 285px;
   }
 }
 
-@media only screen and (min-device-width: 1025px) {
+@media only screen and (min-width: 1025px) {
   .parallax {
     height: 380px;
   }
 }
 
-@media only screen and (min-device-width: 1441px) {
+@media only screen and (min-width: 1441px) {
   .parallax {
     height: 535px;
   }
@@ -11032,7 +11032,7 @@ a.text-dark:focus {
   width: 100%;
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   .index__filterbar {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -11051,7 +11051,7 @@ a.text-dark:focus {
           align-items: normal;
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   .index__filterbar__form {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
