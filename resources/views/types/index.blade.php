@@ -1,24 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container jumbotron index-container">
-        <h1>Les types</h1>
+    <div class="container">
+        <h1 class="my-4 index__title">Les types</h1>
         <a href="{{ route('types.create') }}">
             <i class="fas fa-plus-circle fa-lg">Ajouter un Type</i>
         </a><br><br>
-        <div class="row index-wrapper">
+        <div class="row">
             @if (count($types))
                 @foreach ($types as $type)
-                    <div class="col-sm-4">
-                        <a class="show-link" href="{{ route('types.show', ['id' => $type->getKey()]) }}">
-                            <div class="card index-item text-center">
-                                @if ($type->image_url)
-                                    <img style="max-height: 180px; max-width: 180px" src="storage/{{ $type->image_url }}" alt="{{ $type->designation }}" class="card-img-top">
-                                @endif
-                                <h4 class="index-item-title">{{ $type->designation }}</h4>
+                    <div class="col-md-4 col-sm-6 index__item portfolio-item">
+                        <div class="card h-100">
+                            @if ($type->image_url)
+                                <div class="index__item__image">
+                                    <img class="card-img-top" alt="{{ $type->designation }}" src="{{ Storage::url($type->image_url) }}">
+                                </div>
+                            @endif
+                            <div class="card-body">
+                                <a class="show-link" href="{{ route('types.show', ['id' => $type->getKey()]) }}">
+                                    <h4 class="card-title">{{ $type->designation }}</h4>
+                                </a>
                             </div>
-                        </a>
+                        </div>
                     </div>
+
                 @endforeach
             @else
                 <p>Aucun type actuellement</p>

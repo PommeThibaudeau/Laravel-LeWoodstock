@@ -109,7 +109,6 @@
           @endif
         </div>
         <div class="parallax"></div>
-
         <main>
             <div class="container">
                 @yield('content')

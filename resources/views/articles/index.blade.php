@@ -24,8 +24,6 @@
 
             {{ Form::close() }}
 
-
-
             @auth
                 <a href="{{ route('articles.create') }}" class="push">
                     <span class="btn btn-outline-primary">Ajouter</span>
@@ -44,7 +42,7 @@
                                 </div>
                             @endif
                             <div class="index__item__image">
-                                <img class="card-img-top" data-src="{{ Storage::url($article->images[0]->src) }}" alt="{{ $article->images[0]->alt }}" src="{{ Storage::url($article->images[0]->src) }}" data-holder-rendered="true">
+                                <img class="card-img-top" alt="{{ $article->images[0]->alt }}" src="{{ Storage::url($article->images[0]->src) }}">
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">{{ $article->designation }}</h4>

@@ -11019,6 +11019,13 @@ a.text-dark:focus {
 
 /* pages */
 
+#app {
+  max-width: 1280px;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
 .index__title {
   color: #FE5200;
 }
@@ -11082,7 +11089,7 @@ a.text-dark:focus {
 .index__item__image {
   background-size: cover;
   overflow: hidden;
-  height: 40%;
+  height: 100%;
   display: block;
 }
 

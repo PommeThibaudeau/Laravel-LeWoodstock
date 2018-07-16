@@ -46,14 +46,14 @@ class MatterController extends Controller{
     /* Check if the data are accurate */
     $data = request()->validate([
       'designation' => 'required|max:50',
-      'image'       => 'required|mimes:jpg,jpeg,png,bmp',
+      'image'       => 'mimes:jpg,jpeg,png,bmp',
     ]);
 
     $matter              = new Matter();
     $matter->designation = $data['designation'];
 
     /* Optionnal: save image if there is one */
-    if($data['image']){
+    if(isset($data['image']) && !empty($data['image'])){
 
       /* Upload the image */
       $file = request()->file('image');
@@ -99,7 +99,7 @@ class MatterController extends Controller{
     $matter->designation = $data['designation'];
 
     /* Optionnal: save image if there is one */
-    if($data['image']){
+    if(isset($data['image']) && !empty($data['image'])){
 
       /* Upload the image */
       $file = request()->file('image');
