@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
         <h1 class="my-4 index__title">Les créations</h1>
 
@@ -31,8 +30,8 @@
             @endauth
         </div>
 
-        <div class="row">
-            @if(count($articles))
+        @if(count($articles))
+            <div class="row">
                 @foreach ($articles as $article)
                     <div class="col-md-4 col-sm-6 index__item portfolio-item">
                         <div class="card h-100">
@@ -50,7 +49,7 @@
                                 @if( $article->stock > 0)
                                     <p>{{ $article->stock }}</p>
                                 @endif
-                                <p><span class="badge badge-warning">{{ $article->type->designation }}</span></p>
+                                <p><span class="badge badge-primary">{{ $article->type->designation }}</span></p>
                                 @foreach($article->matters()->get() as $matter)
                                     <span class="badge badge-secondary">{{ $matter->designation }}</span>
                                 @endforeach
@@ -79,40 +78,40 @@
                         </div>
                     </div>
                 @endforeach
-        </div>
+            </div>
 
-                @if($page_number > 1)
-                    <ul class="pagination justify-content-center">
-                        @if($actual_page > 1)
-                            <li class="page-item">
-                                <a class="page-link" href="{{ route('articles.index', ['page' => $actual_page-1]) }}" aria-label="Previous">
-                                    <span aria-hidden="true">«</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                        @endif
+            @if($page_number > 1)
+                <ul class="pagination justify-content-center">
+                    @if($actual_page > 1)
+                        <li class="page-item">
+                            <a class="page-link" href="{{ route('articles.index', ['page' => $actual_page-1]) }}" aria-label="Previous">
+                                <span aria-hidden="true">«</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    @endif
 
-                        @for($i = 1; $i<=$page_number; ++$i)
-                            <li class="page-item">
-                                <a class="page-link" href="{{ route('articles.index', ['page' => $i]) }}">
-                                    {{ $i }}
-                                </a>
-                            </li>
-                        @endfor
+                    @for($i = 1; $i<=$page_number; ++$i)
+                        <li class="page-item">
+                            <a class="page-link" href="{{ route('articles.index', ['page' => $i]) }}">
+                                {{ $i }}
+                            </a>
+                        </li>
+                    @endfor
 
-                        @if($actual_page < $page_number)
-                            <li class="page-item">
-                                <a class="page-link" href="{{ route('articles.index', ['page' => $actual_page+1]) }}" aria-label="Next">
-                                    <span aria-hidden="true">»</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        @endif
-                    </ul>
-                @endif
-            @else
-                <p>Aucun article actuellement</p>
+                    @if($actual_page < $page_number)
+                        <li class="page-item">
+                            <a class="page-link" href="{{ route('articles.index', ['page' => $actual_page+1]) }}" aria-label="Next">
+                                <span aria-hidden="true">»</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    @endif
+                </ul>
             @endif
+        @else
+            <p>Aucun article actuellement</p>
+        @endif
 
     </div>
 
