@@ -7,6 +7,7 @@ use App\Article;
 use App\Image;
 use App\Matter;
 use App\Type;
+use Illuminate\Pagination\Paginator;
 
 class ArticleController extends Controller{
 
@@ -92,6 +93,7 @@ class ArticleController extends Controller{
       'article'        => new Article(),
       'articles'       => $articles,
       'page_number'    => $page_number,
+      'actual_page'    => Paginator::resolveCurrentPage(),
       'search_filter'  => $search_filter,
       'types'          => collect([''])->union(Type::all()->pluck('designation', 'id')),
       'type_filter'    => $type_filter,

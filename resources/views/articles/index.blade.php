@@ -83,12 +83,14 @@
 
                 @if($page_number > 1)
                     <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">«</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
+                        @if($actual_page > 1)
+                            <li class="page-item">
+                                <a class="page-link" href="{{ route('articles.index', ['page' => $actual_page-1]) }}" aria-label="Previous">
+                                    <span aria-hidden="true">«</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                        @endif
 
                         @for($i = 1; $i<=$page_number; ++$i)
                             <li class="page-item">
@@ -98,12 +100,14 @@
                             </li>
                         @endfor
 
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">»</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
+                        @if($actual_page < $page_number)
+                            <li class="page-item">
+                                <a class="page-link" href="{{ route('articles.index', ['page' => $actual_page+1]) }}" aria-label="Next">
+                                    <span aria-hidden="true">»</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 @endif
             @else
