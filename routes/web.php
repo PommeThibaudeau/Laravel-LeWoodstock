@@ -60,6 +60,12 @@ Route::group(['middleware' => ['auth']], function(){
 });
 
 /**
+ * CONTACT FORM
+ */
+Route::get('contacts', 'ContactController@create')->name('contacts.create');
+Route::post('contacts', 'ContactController@store')->name('contacts.store');
+
+/**
  * ARTICLES
  */
 Route::get('/articles', 'ArticleController@index')->name('articles.index');
