@@ -11026,6 +11026,10 @@ a.text-dark:focus {
   position: relative;
 }
 
+.nav-colored {
+  left: 0;
+}
+
 .index__title {
   color: #FE5200;
 }

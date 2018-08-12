@@ -36,7 +36,7 @@
         <nav class="navbar navbar-expand-md navbar-light nav-colored">
             <div class="container">
                 @auth
-                    <a class="navbar-brand nav-colored__home-title" href="{{ url('/home') }}">
+                    <a class="navbar-brand nav-colored__home-title" href="{{ url('/') }}">
                         {{ config('app.name') }}
                     </a>
                 @else
@@ -91,6 +91,9 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item">
+                            <a class="nav-link nav-colored__page-title" href="{{ route('contacts.create') }}">{{ __('Contact') }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -114,6 +117,7 @@
                 @yield('content')
             </div>
         </main>
+    </div>
 
         <footer class="page-footer font-small blue pt-4 mt-4 footer-colored">
 
@@ -134,7 +138,6 @@
 
         </footer>
         <!-- Footer -->
-    </div>
 </body>
 <script>
     $( document ).ready(function() {
