@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <br>
     <div class="container">
         @if(Session::has('success'))
@@ -12,7 +13,7 @@
             <div class="col-md-8">
                 <h2>Contactez moi :</h2>
                 <br>
-                {{ Form::open(['route'=>'contacts.store']) }}
+                {{ Form::model($contact, ['route'=>'contacts.store']) }}
 
                     <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         {{ Form::label('Name:') }}

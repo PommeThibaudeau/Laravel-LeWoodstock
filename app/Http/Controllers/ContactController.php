@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Facades\Mail;
 use App\Contact;
 use App\Mail\ContactMailer;
@@ -15,16 +16,20 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($article_id = null){
-        $message = '';
+    public function create(Request $request){
+        $article = new Article();
+        $contact = new Contact();
 
-        if($article_id !==null){
-            $article = Article::findOrFail($article_id);
-            $message = "\n\n\n\n\n\n Création ciblée : ".$article->designation;
+        if(isset($request->all()['article_id'])){
+            $article_id = $request->all()['article_id'];
+            $article = $article->findOrFail($article_id);
+            $article_link = config()['app']['url']."/articles/".$article_id ;
+            $contact->message = "\n\n\n\n\n\n\n\nCréation ciblée : ".$article->designation."\nLien vers l'article : ".$article_link;
         }
 
         return view('contacts.create', [
-            'message' => $message,
+            'article' => $article,
+            'contact' => $contact,
         ]);
     }
 

@@ -19,7 +19,9 @@
                 <img class="card-img-top" data-src="{{ Storage::url($image->src) }}" alt="{{ $article->designation }}" style="height: 180px; width: 180px; display: block;" src="{{ Storage::url($image->src) }}" data-holder-rendered="true">
             @endforeach
         @endif
-
+        <a href="{{ route('contacts.create', ['article_id' => $article->getKey()]) }}">
+            <h5>Réserver cet article <i class="far fa-envelope"></i></h5>
+        </a>
         @auth
             <a href="{{ route('articles.edit', ['id' => $article->getKey()]) }}">
                 <i class="fas fa-edit fa-3x"></i>
